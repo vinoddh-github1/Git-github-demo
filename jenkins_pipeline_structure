@@ -1,0 +1,80 @@
+// All the code should be written in the pipeline{} block
+pipeline{
+
+agent{
+	// This is mandatory section
+	// name of the server/VM/Windows/mac where the pipeline has to be executed.
+	// Pipeline can also be executed on the same ec2 server where Jenkins is installed.
+    // In this case the agent = any
+
+}
+tools {
+
+	// This is not a mandatory section
+	// If the pipeline has to be used any specific version of tools
+	//Mention the name of the tool that has been configured in the settings-tools section of Jenkins 
+	// example: mymaven
+}
+triggers{
+	// This is not a mandatory section
+	// at what event  or time the pipeline has to be executed.
+	// we can setup trigger directly on the pipeline job, just like we did in freestyle job.
+	// OR You can write a code for POLLSCL or periodic trigger
+}
+parameters{
+	// variables are the temporary memory locations that store some data
+
+	// They allow us to run the pipeline with different sets of data
+
+	// This data can we passed when executing the pipeline
+
+	//Parameterized pipelines
+}
+
+environment{
+	// This is not mandatory, need based only
+
+	// Created environment variables
+
+	//Stored data to be used with in the pipeline
+}
+
+stages{
+
+    // this is the main section of pipeline
+    // This section is mandatory
+    //stages section consists of stage
+    // the stage or jobs to be executed
+    // They are executed in sequence
+    //can also be executed in parallel
+    
+    stage1("job1"){
+        // This is mandatory section
+
+        steps{
+            //This is mandatory section
+            // Here we will write the command, scripts to be executed
+
+        }
+    }
+
+    stage2("job2"){
+
+        steps{
+
+            // write any commans or scripts
+
+        }
+        post {
+         success{
+
+            //commands to be executed after the step have been completed
+         }
+         failure{
+            //commands to be executed after the step have been completed
+         }  
+        }
+    }
+}
+
+}
